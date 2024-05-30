@@ -1,0 +1,91 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+body{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.header{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    width: 400px;
+    justify-content: space-around;
+}
+
+button{
+   padding: 10px 15px;
+   border: none;
+   border-radius: 5px;
+}
+
+#black{
+    background-color: black;
+    color: white;
+}
+
+#random{
+    background-color: rgb(243, 164, 18);
+}
+
+#reset{
+    background-color: blue;
+    color: white;
+}
+
+#popup{
+    background-color: rgb(190, 11, 11);
+    color: white;
+}
+
+.footer{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 500px;
+    align-items: center;
+
+}
+
+.game-box{
+    /* width: 500px;
+    height: 500px; */
+    display: flex;
+    /* solution 2----- */
+    flex-wrap: wrap;
+    margin: 100px auto;
+    /* ---------------- */
+    /* solution 1------ */
+    /* flex-direction: row; */
+    /* justify-content: space-around; */
+    background-color: #bfbfbf;
+    box-shadow: 10px 10px rgba(129, 131, 133, 0.034);
+}
+
+
+/* solution 1 */
+/* .game-box>div{
+    height: auto;
+    width: auto;
+    flex: 1 0 auto;
+    display: flex;
+    flex-direction: column;
+    color: white;
+    background-color: white;
+}
+
+.game-box>div>*{
+    flex:1;
+} */
+
+
+/* solution 2 */
+.cell{
+    border:1px solid grey;
+}
+
