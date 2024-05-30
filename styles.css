@@ -16,6 +16,7 @@ body{
     align-items: center;
     width: 400px;
     justify-content: space-around;
+    margin-top: 20px;
 }
 
 button{
@@ -53,17 +54,15 @@ button{
 }
 
 .game-box{
-    /* width: 500px;
-    height: 500px; */
     display: flex;
     /* solution 2----- */
     flex-wrap: wrap;
-    margin: 100px auto;
+    margin: 20px;
     /* ---------------- */
     /* solution 1------ */
     /* flex-direction: row; */
     /* justify-content: space-around; */
-    background-color: #bfbfbf;
+    background-color: #f3f3f3;
     box-shadow: 10px 10px rgba(129, 131, 133, 0.034);
 }
 
@@ -86,6 +85,6 @@ button{
 
 /* solution 2 */
 .cell{
-    border:1px solid grey;
+    border:1px solid rgb(163, 163, 163);
 }
 

@@ -3,7 +3,8 @@
 //create divs using js. put grid Squares inside gameBox.
 //use flexbox to make divs appear as a grid
 
-// fist solution for grid
+// fist solution for grid, slower with a nested loop----
+
 // function grid(size){
 //     const gameBox = document.querySelector('.game-box')
 //     for (let i = 0; i < size; i++) {
@@ -21,27 +22,35 @@
 
 // grid(16)
 
+// --------------------------------------------------
+//second solution for grid condense rows and cols to one loop. 
 
-//second solution for grid
-const GRIDSIDE = 600;
-// let rows = 16;
-// let cols =16;
+const GRIDSIDE = 500;
+let size = 16;
 
 const sketchArea = document.querySelector('.game-box')
 sketchArea.style.width  = `${GRIDSIDE}px`;
 sketchArea.style.hieght = `${GRIDSIDE}px`;
 
+function changeColor(){
+ this.style.backgroundColor = 'black'
+}
+
 function createGridCells(size){
+    const numberOfSquares =(size * size);
+    const widthOrHeight =`${(GRIDSIDE / size) -2}px`;
     // 1 loop is faster than 2, O(n)
-    for(let i=0; i< (size*size); i++){
+    for(let i=0; i< numberOfSquares; i++){
         const gridCell = document.createElement('div');
 
-        gridCell.style.width =`${(GRIDSIDE / size)-2}px`;
-        gridCell.style.height =`${(GRIDSIDE / size)-2}px`;
+        gridCell.style.width = widthOrHeight;
+        gridCell.style.height = widthOrHeight;
         gridCell.classList.add('cell');
 
         sketchArea.appendChild(gridCell);
+
+        gridCell.addEventListener('mouseover', changeColor)
     }
 }
 
-createGridCells(16);
+createGridCells(20);
