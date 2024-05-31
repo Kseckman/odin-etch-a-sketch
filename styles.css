@@ -55,6 +55,8 @@ button{
 
 .game-box{
     display: flex;
+    /* solution 3----- */
+    /* display: grid; */
     /* solution 2----- */
     flex-wrap: wrap;
     margin: 20px;

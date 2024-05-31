@@ -25,17 +25,20 @@
 // --------------------------------------------------
 //second solution for grid condense rows and cols to one loop. 
 
+// set side of box and amount of divs
 const GRIDSIDE = 500;
 let size = 16;
 
-const sketchArea = document.querySelector('.game-box')
-sketchArea.style.width  = `${GRIDSIDE}px`;
-sketchArea.style.hieght = `${GRIDSIDE}px`;
+//select div from html. convert gamebox style hight and width to px
+const gameBox = document.querySelector('.game-box')
+gameBox.style.width  = `${GRIDSIDE}px`;
+gameBox.style.hieght = `${GRIDSIDE}px`;
 
 function changeColor(){
- this.style.backgroundColor = 'black'
+ this.style.backgroundColor = 'black';
 }
 
+//function that creates the divs with a loop. 
 function createGridCells(size){
     const numberOfSquares =(size * size);
     const widthOrHeight =`${(GRIDSIDE / size) -2}px`;
@@ -47,10 +50,31 @@ function createGridCells(size){
         gridCell.style.height = widthOrHeight;
         gridCell.classList.add('cell');
 
-        sketchArea.appendChild(gridCell);
+        gameBox.appendChild(gridCell);
 
         gridCell.addEventListener('mouseover', changeColor)
     }
 }
 
 createGridCells(20);
+//solution 3 ////////////////////////////////////
+
+document.addEventListener('DOMContentLoaded', function(){
+    createBoard(16)
+    console.log('hi')
+})
+
+function createBoard(){
+    let board = document.querySelector('.game-box');
+
+    board.style.gridTemplateColumns = `repeat(${size}, 1fr)`;
+    board.style.gridTemplateRows = `repeat(${size}, 1fr)`;
+
+    let numDivs = size * size;
+
+    for(let i=0; i<numDivs; i++){
+        let div = document.greateElement('div');
+        board.insertAdjacentElement('beforeEnd',div);
+        div.style.backgroundColor = 'yellow';
+    }
+}
