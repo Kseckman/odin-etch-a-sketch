@@ -29,13 +29,13 @@ document.addEventListener('DOMContentLoaded', function(){
 
     let btn_popup = document.querySelector('#popup');
     btn_popup.addEventListener('click', function(){
-        removeGrid()
         let size = getSize();
         createGridCells(size);
     })
 })
 
 // set side of box and amount of divs
+let color = 'black'
 const GRIDSIDE = 500;
 let gameBox = document.querySelector('.game-box')
 gameBox.style.width  = `${GRIDSIDE}px`;
@@ -45,7 +45,15 @@ gameBox.style.hieght = `${GRIDSIDE}px`;
 //select div from html. convert gamebox style hight and width to px
 
 function changeColor(){
-    this.style.backgroundColor = 'black';
+    if(color == 'random'){
+        this.style.backgroundColor = `hsl(${Math.random() * 360}, 100%, 50%)`
+    }  else {
+        this.style.backgroundColor = 'black';
+    }
+}
+
+function setColor(colorChoice){
+    color = colorChoice;
 }
 
 //function that creates the divs with a loop. 
@@ -69,6 +77,20 @@ function createGridCells(size){
 function removeGrid(){
     const cells = document.querySelectorAll('.cell');
     cells.forEach((e) => e.remove())
+}
+
+function getSize(){
+    let input = parseInt(prompt('Choose a number between 10 and 100 for your game board'));
+    let message = document.querySelector('#message');
+    if(input == '' || isNaN(input)){
+        message.innerHTML ='Pleave provide a number';
+    } else if (input <10 || input > 100){
+        message.innerHTML = 'Provide number between 1 and 100';
+    }  else{
+        message.innerHTML ='Have fun.';
+        removeGrid()
+        return input;
+    }
 }
 
 //solution 3 ////////////////////////////////////
@@ -98,16 +120,3 @@ function removeGrid(){
 //     }
 // }
 
-function getSize(){
-    let input = parseInt(prompt('Choose a number between 10 and 100 for your game board'));
-    let message = document.querySelector('#message');
-    if(input == '' || isNaN(input)){
-        message.innerHTML ='Pleave provide a number';
-    } else if (input <10 || input > 100){
-        message.innerHTML = 'Provide number between 1 and 100';
-    }  else{
-        message.innerHTML ='Have fun.';
-        return input;
-    }
-
-}
