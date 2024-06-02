@@ -60,38 +60,13 @@ button:hover{
 
 .game-box{
     display: flex;
-    /* solution 3----- */
-    /* display: grid; */
-    /* solution 2----- */
     flex-wrap: wrap;
     margin: 20px;
-    /* ---------------- */
-    /* solution 1------ */
-    /* flex-direction: row; */
-    /* justify-content: space-around; */
     background-color: #f3f3f3;
     border: 3px solid black;
     box-shadow: 5px 5px rgba(129, 131, 133, 0.2);
 }
 
-
-/* solution 1 */
-/* .game-box>div{
-    height: auto;
-    width: auto;
-    flex: 1 0 auto;
-    display: flex;
-    flex-direction: column;
-    color: white;
-    background-color: white;
-}
-
-.game-box>div>*{
-    flex:1;
-} */
-
-
-/* solution 2 */
 .cell{
     border:1px solid rgb(163, 163, 163);
 }

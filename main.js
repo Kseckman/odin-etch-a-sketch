@@ -3,27 +3,6 @@
 //create divs using js. put grid Squares inside gameBox.
 //use flexbox to make divs appear as a grid
 
-// fist solution for grid, slower with a nested loop----
-
-// function grid(size){
-//     const gameBox = document.querySelector('.game-box')
-//     for (let i = 0; i < size; i++) {
-//         let column = document.createElement("div");
-//         // column.classList.add("column");
-//         for (let j = 1; j <= size; j++) {
-//           let row = document.createElement("div");
-//           row.classList.add("row");
-//           row.style.border = "1px solid black";
-//           column.appendChild(row);
-//         }
-//       gameBox.appendChild(column);
-//     }
-// }
-
-// grid(16)
-
-// --------------------------------------------------
-//second solution for grid condense rows and cols to one loop. 
 document.addEventListener('DOMContentLoaded', function(){
     createGridCells(16);
 
@@ -34,33 +13,38 @@ document.addEventListener('DOMContentLoaded', function(){
     })
 })
 
-// set side of box and amount of divs
-let color = 'black'
+// set size of box
+let gameBox = document.querySelector('.game-box');
+let color = 'rgba(0, 0, 0, 0.959)';
 const GRIDSIDE = 500;
-let gameBox = document.querySelector('.game-box')
 gameBox.style.width  = `${GRIDSIDE}px`;
 gameBox.style.hieght = `${GRIDSIDE}px`;
-
-
-//select div from html. convert gamebox style hight and width to px
 
 function changeColor(){
     if(color == 'random'){
         this.style.backgroundColor = `hsl(${Math.random() * 360}, 100%, 50%)`
-    }  else {
+    } else if (color == 'black'){
         this.style.backgroundColor = 'black';
-    }
+        parseFloat(this.style.opacity += '1');
+    } else{
+        this.style.backgroundColor = 'rgba(0, 0, 0, 0.959)';
+        let currentOpacity = parseFloat(this.style.opacity += '0.1');
+
+        if(currentOpacity <1){
+            currentOpacity += 0.1;
+            this.style.opacity = currentOpacity.toFixed(1);
+        }
+    }  
 }
 
 function setColor(colorChoice){
     color = colorChoice;
 }
 
-//function that creates the divs with a loop. 
 function createGridCells(size){
     let numberOfSquares =(size * size);
     let widthOrHeight =`${(GRIDSIDE / size) -2}px`;
-    // 1 loop is faster than 2, O(n)
+
     for(let i=0; i< numberOfSquares; i++){
         let gridCell = document.createElement('div');
 
@@ -69,14 +53,13 @@ function createGridCells(size){
         gridCell.classList.add('cell');
 
         gameBox.appendChild(gridCell);
-
         gridCell.addEventListener('mouseover', changeColor)
     }
 }
 
 function removeGrid(){
     const cells = document.querySelectorAll('.cell');
-    cells.forEach((e) => e.remove())
+    cells.forEach((e) => e.remove());
 }
 
 function getSize(){
@@ -93,30 +76,12 @@ function getSize(){
     }
 }
 
-//solution 3 ////////////////////////////////////
-
-// document.addEventListener('DOMContentLoaded', function(){
-//     createBoard(16)
-//     let btn_popup = document.querySelector('#popup');
-//     btn_popup.addEventListener('click', function(){
-//         let size = getSize();
-//         createBoard(size);
-//     })
-//     console.log('hi')
-// })
-
-// function createBoard(){
-//     let board = document.querySelector('.game-box');
-
-//     board.style.gridTemplateColumns = `repeat(${size}, 1fr)`;
-//     board.style.gridTemplateRows = `repeat(${size}, 1fr)`;
-
-//     let numDivs = size * size;
-
-//     for(let i=0; i<numDivs; i++){
-//         let div = document.createElement('div');
-//         board.insertAdjacentElement('beforeEnd',div);
-//         div.style.backgroundColor = 'yellow';
-//     }
-// }
+function resetGame(){
+    let divs = document.querySelectorAll('.cell');
+    divs.forEach((div) => {
+        div.style.backgroundColor = '#f3f3f3';
+        div.style.opacity = null;   
+        color = 'rgba(0, 0, 0, 0.959)';
+    });   
+}
 
